@@ -15,6 +15,18 @@ public class Car {
 
     @Column(name = "model")
     String model;
+    
+    @OneToOne(mappedBy = "car",fetch = FetchType.LAZY)
+
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Car(){}
 
@@ -36,18 +48,6 @@ public class Car {
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
-
-    @OneToOne(mappedBy = "car",fetch = FetchType.LAZY)
-
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public String toString() {
